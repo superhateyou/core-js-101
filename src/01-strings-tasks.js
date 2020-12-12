@@ -296,7 +296,7 @@ function isString(value) {
  *   'Q♠' => 50
  *   'K♠' => 51
  */
-function getCardId(value) {
+function getCardId(/*value*/) {
   // const cardMap = {
   //   typeMap: {
   //     '♣': 0,
