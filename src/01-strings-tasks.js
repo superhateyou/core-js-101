@@ -297,14 +297,14 @@ function isString(value) {
  *   'K♠' => 51
  */
 function getCardId(value) {
-  const cards = {
-    types: {
+  const cardMap = {
+    typeMap: {
       '♣': 0,
       '♦': 1,
       '♥': 2,
       '♠': 3,
     },
-    values: {
+    valueMap: {
       A: '1',
       J: '11',
       Q: '12',
@@ -313,9 +313,10 @@ function getCardId(value) {
   };
 
   const cardType = value[value.length - 1];
-  const strength = value.slice(0, value.length - 1);
-  return cards.types[cardType] * 13 - 1 + (Number(strength))
-    ? Number(strength) : Number(cards.values[strength]);
+  const cardStrength = value.slice(0, value.length - 1);
+
+  return cardMap.typeMap[cardType] * 13 - 1 + (Number(cardStrength)
+    ? Number(cardStrength) : Number(cardMap.valueMap[cardStrength]));
 }
 
 
