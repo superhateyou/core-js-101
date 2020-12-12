@@ -128,7 +128,7 @@ function getAngleBetweenVectors(x1, y1, x2, y2) {
  *     5     => 5
  *     0     => 0
  */
-function getLastDigit(value ) {
+function getLastDigit(value) {
   return value % 10;
 }
 
@@ -145,7 +145,7 @@ function getLastDigit(value ) {
  * '-525.5'     => -525.5
  */
 function parseNumberFromString(value) {
-  return parseFloat(value);
+  return +value;
 }
 
 /**
