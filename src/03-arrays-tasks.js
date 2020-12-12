@@ -38,7 +38,7 @@ function findElement(arr, value) {
 function generateOdds(len) {
   const result = [];
   result.length = len;
-  return result.fill(1).map((x, index) => index * 2 + 1)
+  return result.fill(1).map((x, index) => index * 2 + 1);
 }
 
 
