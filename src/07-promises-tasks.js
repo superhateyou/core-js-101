@@ -28,8 +28,20 @@
  *      .catch((error) => console.log(error.message)) // 'Error: Wrong parameter is passed!
  *                                                    //  Ask her again.';
  */
-function willYouMarryMe(/* isPositiveAnswer */) {
-  throw new Error('Not implemented');
+function willYouMarryMe(isPositiveAnswer) {
+  const reactPositive = 'Hooray!!! She said "Yes"!';
+  const reactNegative = 'Oh no, she said "No".';
+  const errorMessage = 'Wrong parameter is passed! Ask her again.';
+
+  return new Promise((resolve, reject) => {
+    if (isPositiveAnswer === true) {
+      resolve(reactPositive);
+    } else if (isPositiveAnswer === false) {
+      resolve(reactNegative);
+    } else {
+      reject(new Error(errorMessage));
+    }
+  });
 }
 
 
@@ -48,10 +60,9 @@ function willYouMarryMe(/* isPositiveAnswer */) {
  *    })
  *
  */
-function processAllPromises(/* array */) {
-  throw new Error('Not implemented');
+function processAllPromises(array) {
+  return Promise.all(array).then((res) => res);
 }
-
 /**
  * Return Promise object that should be resolved with value received from
  * Promise object that will be resolved first.
@@ -71,8 +82,8 @@ function processAllPromises(/* array */) {
  *    })
  *
  */
-function getFastestPromise(/* array */) {
-  throw new Error('Not implemented');
+function getFastestPromise(array) {
+  return Promise.race(array).then((res) => res);
 }
 
 /**
@@ -92,8 +103,15 @@ function getFastestPromise(/* array */) {
  *    });
  *
  */
-function chainPromises(/* array, action */) {
-  throw new Error('Not implemented');
+
+function chainPromises(array, action) {
+  return new Promise((resolve) => {
+    const result = [];
+    array.forEach((x) => {
+      x.then((item) => result.push(item));
+    });
+    resolve(result);
+  }).then((x) => x.reduce(action));
 }
 
 module.exports = {
